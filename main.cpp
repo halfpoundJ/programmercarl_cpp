@@ -3,15 +3,15 @@
 //
 #include <iostream>
 #include <vector>
-#include "remove_element_27.h"
+#include "spiral_matrix_II_59.h"
 
 using namespace std;
 
 int main() {
-    Solution_2 s;
-    vector<int> nums = {1, 2, 3, 4, 5, 4};
-    int target = 4;
-    int result = s.removeElement(nums, target);
+    Solution s;
+    vector<int> nums = {2,3,1,2,4,3};
+    int n = 3;
+    int result = s.generateMatrix(n);
     cout << result << endl;
     return 0;
 }
