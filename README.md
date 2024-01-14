@@ -65,3 +65,42 @@
 [Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/description/)
 
 核心思路：遍历每一边遵循左闭右开原则，逆时针旋转填充，从外向里
+
+## Day 3
+链表基本定义
+```cpp
+// 单链表
+struct ListNode {
+   int val;  // 节点上存储的元素
+   ListNode *next;  // 指向下一个节点的指针
+   ListNode(int x) : val(x), next(NULL) {}  // 节点的构造函数
+};
+```
+构造函数可以在创建ListNode节点时候同时初始化。
+
+![数组和链表的对比](https://code-thinking-1253855093.file.myqcloud.com/pics/20200806195200276.png)
+
+[Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/description/)
+
+1. 不使用虚拟节点：需要判断 target 是不是头节点。cur 指针一定指向要删除的节点的上一个节点。
+2. 使用虚拟节点 dummyHead 核心：
+`ListNode* dummyHead = new ListNode(0);` 设置了一个指向 head 的指针。不需要判断 target 是否是头节点
+，最后返回的是 dummyHead 的下一个节点。
+
+[Design Linked List](https://leetcode.com/problems/design-linked-list/description/)
+
+核心查找 index 所在链表位置的方式：
+
+```
+while(index--) {
+    cur = cur->next;
+}
+```
+
+[Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)
+
+1. 双指针法核心：定义两个指针 prev 指向 NULL 和 cur 指向 head。再定义
+一个 temp 临时指针用来存储 cur->next 以便之后 cur->next 翻转。通过将
+temp 赋值给 cur 即将 cur 移动到 temp 的位置，将 prev 移动到 cur 位置
+来实现遍历。
+2. 递归法核心：将双指针法中 prev 和 cur 赋值放在函数输入中。
