@@ -54,12 +54,13 @@
 1. 暴力解法：for 循环先把数组每个元素平方，在用sort 函数快排。时间复杂度为 O(n + nlogn)
 2. 双指针法：
 ![双指针法图解](https://code-thinking.cdn.bcebos.com/gifs/977.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9.gif)
+
 核心： 由于数组有序且含有负数，则最大值一定在数组的两端--> 定义两个分别指向数组两端的指针，比较大小再放入新数组里面。如何放入新数组？--> 定义一个指向新数组尾端的指针，当左边平方值大于右边平方值的时候，将左边的平方值放入新数组的最后，并且由于左边的值已经放入新数组了，需要将左边指针向后移，即 i++。
 
 [Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
 
 1. 暴力解法：两个 for 循环遍历所有集合的情况，如果集合内所有元素和大于 target ，取集合长度并且更新 result，不断取最小的 result。
-2. 滑动窗口法：核心一个 for 循环，j 表示滑动窗口终止位置。当集合内元素和大于 target ，取集合长度，移动滑窗起始位置 i 。
+2. 滑动窗口法：核心一个 for 循环，j 表示滑动窗口终止位置。当集合内元素和大于 target ，取集合长度，移动滑窗起始位置 i 。其中需要用 while 而不是 if 来判断 sum 是否大于目标值，因为需要持续的向后滑窗。结果 result 应该初始为最大值 INT32_MAX, 然后不断与当前 result 值比较，达到取到最小的数组长度的目的。
 ![滑动窗口图解](https://code-thinking.cdn.bcebos.com/gifs/209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84.gif)
 
 [Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/description/)
