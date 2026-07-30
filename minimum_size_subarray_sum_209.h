@@ -13,7 +13,7 @@ using namespace std;
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
-        int result = INT32_MAX;
+        int result = INT_MAX;
         int sum = 0; // sum of all numbers in sliding window
         int i = 0; // start position of sliding window
         int subLength = 0; // length of sliding window
@@ -26,7 +26,25 @@ public:
                 i++; // sliding window moves.
             }
         }
-        return result == INT32_MAX ? 0 : result; // if there's no such subarray, return 0.
+        return result == INT_MAX ? 0 : result; // if there's no such subarray, return 0.
+    }
+};
+
+class Solution_2 {
+public:
+    int minSubArrayLen(int target, vector<int> &nums) {
+        int left = 0;
+        int sum = 0;
+        int result = INT_MAX;
+        for (int right = 0; right < nums.size(); ++right) {
+            sum += nums[right];
+            while(sum >= target) {
+                result = min(right - left + 1, result);
+                sum -= nums[left];
+                left++;
+            }
+        }
+        return result != INT_MAX ? result : 0;
     }
 };
 

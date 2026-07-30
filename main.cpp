@@ -3,15 +3,14 @@
 //
 #include <iostream>
 #include <vector>
-#include "binary_search_704.h"
+#include "practice.h"
+#include "minimum_size_subarray_sum_209.h"
 
 using namespace std;
 
 int main() {
-    Solution_1 s;
-    int result = 0;
-    vector<int> arr = {1, 2, 3, 4, 5};
-    result = s.search(arr, 4);
+    Solution s;
+    vector<int> arr = {1,1,1,1,1,1,1,1};
+    int result = s.minSubArrayLen(11, arr);
     cout << result << endl;
-    return 0;
 } 

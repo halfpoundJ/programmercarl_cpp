@@ -2,14 +2,61 @@
     "version": 3,
     "configurePresets": [
         {
-            "name": "default",
-            "description": "Default settings for my cmake project",
-            "hidden": false,
-            "generator": "Unix Makefiles",
-            "binaryDir": "${workspaceFolder}/build",
+            "name": "windows-debug",
+            "description": "Windows only: MinGW makefiles + MSYS2 g++",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/windows-debug",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
+                "CMAKE_CXX_COMPILER": "g++"
+            }
+        },
+        {
+            "name": "windows-release",
+            "description": "Windows only: MinGW makefiles + MSYS2 g++",
+            "generator": "MinGW Makefiles",
+            "binaryDir": "${sourceDir}/build/windows-release",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_CXX_COMPILER": "g++"
+            }
+        },
+        {
+            "name": "macos-debug",
+            "description": "macOS only: Unix makefiles + Apple Clang",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/macos-debug",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "macos-release",
+            "description": "macOS only: Unix makefiles + Apple Clang",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/macos-release",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
             }
         }
     ]

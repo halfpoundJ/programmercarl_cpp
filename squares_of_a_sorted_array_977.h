@@ -42,4 +42,27 @@ public:
     }
 };
 
+// use while
+class Solution_3{
+public:
+    vector<int> sortedSquares(vector<int> &nums) {
+        vector<int> result = nums;
+        int left = 0;
+        int right = nums.size() - 1;
+        int k = right;
+        while(k >= 0) {
+            if (nums[left] * nums[left] > nums[right] * nums[right]) {
+                result[k] = nums[left] * nums[left];
+                k--;
+                left++;
+            } else {
+                result[k] = nums[right] * nums[right];
+                k--;
+                right--;
+            }
+        }
+        return result;  
+    }
+};
+
 #endif //PROGRAMMERCARL_CPP_SQUARES_OF_A_SORTED_ARRAY_977_H
